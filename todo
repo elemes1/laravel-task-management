@@ -1,0 +1,30 @@
+Setup project *
+
+Install Breeze for auth  *
+
+Write Test
+
+
+Data Modelling *
+Client side actions. Task management
+	CRUD Plan
+	 Create task
+	 Update Task
+
+	 Delete Task
+	 Show Tasks
+	 Change Task Status
+	Assign task Priority
+
+
+Admin Side actions
+  Setup Filament  *
+   admin Dashboard
+	users
+		Create users
+		Update Users
+		Delete Users
+		Show Users
+
+	Roles CRUD
+	Plans & Tasks  CRUD
