@@ -24,14 +24,10 @@ class Task extends Model
     }
 
 
-
     public function attachments() {
         return $this->hasMany(Attachment::class);
     }
 
-    public function user() {
-        return $this->belongsTo(User::class, 'created_by');
-    }
 
     public function getActivitylogOptions(): LogOptions
     {

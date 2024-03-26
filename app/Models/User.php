@@ -3,11 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements   FilamentUser
 {
     use HasFactory, Notifiable;
 
@@ -52,7 +54,11 @@ class User extends Authenticatable
 
 
     public function tasks() {
-        return $this->hasMany(Task::class, 'created_by');
+        return $this->hasManyThrough(Task::class, Plan::class, 'created_by', 'plan_id', 'id');
+    }
+
+    public function plans() {
+        return $this->hasMany(Plan::class, 'created_by');
     }
 
     public function comments() {
@@ -68,4 +74,8 @@ class User extends Authenticatable
         return $this->hasMany(Attachment::class, 'uploaded_by');
     }
 
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return   in_array(config('todo.default_admin_role_name'), $this->roles()->pluck('name')->toArray() ) ; // && $this->hasVerifiedEmail();
+    }
 }

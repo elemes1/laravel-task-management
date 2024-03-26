@@ -12,4 +12,9 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+
+Route::get('plans/{plan}', \App\Livewire\Plan::class)
+    ->middleware(['auth'])
+    ->name('plan.edit');
+
 require __DIR__.'/auth.php';

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\PlanStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,5 +13,17 @@ class Plan extends Model
 
     public function tasks() {
         return $this->hasMany(Task::class);
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'status' => PlanStatus::class,
+        ];
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'created_by');
     }
 }

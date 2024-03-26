@@ -12,6 +12,14 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
+        <style>
+          [x-cloak] {
+            display: none !important;
+          }
+        </style>
+
+        @filamentStyles
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
@@ -29,8 +37,11 @@
 
             <!-- Page Content -->
             <main>
+
                 {{ $slot }}
             </main>
         </div>
+        @filamentScripts
+
     </body>
 </html>

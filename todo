@@ -6,6 +6,7 @@ Write Test
 
 
 Data Modelling *
+
 Client side actions. Task management
 	CRUD Plan
 	 Create task
@@ -20,11 +21,10 @@ Client side actions. Task management
 Admin Side actions
   Setup Filament  *
    admin Dashboard
-	users
-		Create users
-		Update Users
-		Delete Users
-		Show Users
-
-	Roles CRUD
-	Plans & Tasks  CRUD
+	users*
+		Create users //Add fields / columns
+		Update Users //Add fields  / columns
+		Delete Users //Add fields / columns
+		Show Users //Add fields / columns
+	Roles CRUD*
+	Plans & Tasks  CRUD *
