@@ -7,6 +7,10 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                // 'resources/js/kanban.js',
+                // 'resources/js/task-board.js',
+                // 'resources/js/task-utility.js',
+                // 'resources/js/task-modal.js',
             ],
             refresh: true,
         }),

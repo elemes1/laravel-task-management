@@ -19,7 +19,7 @@
         </style>
 
         @filamentStyles
-
+        @stack('footer-scripts')
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
@@ -35,12 +35,14 @@
                 </header>
             @endif
 
+
             <!-- Page Content -->
             <main>
 
                 {{ $slot }}
             </main>
         </div>
+
         @filamentScripts
 
     </body>

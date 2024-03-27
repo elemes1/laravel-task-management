@@ -32,6 +32,7 @@ class Task extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
+            ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}")
             ->dontLogIfAttributesChangedOnly(['created_at', 'updated_at'])
             ->logOnlyDirty();
     }

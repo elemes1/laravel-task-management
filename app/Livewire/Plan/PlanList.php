@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Plan;
 
 use App\Models\Plan;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
-use Filament\Support\Contracts\TranslatableContentDriver;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
@@ -14,7 +12,6 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
-use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class PlanList extends Component  implements HasForms, HasTable
 {
@@ -47,7 +44,7 @@ class PlanList extends Component  implements HasForms, HasTable
 
     public function render()
     {
-        return view('livewire.plan-list');
+        return view('livewire.pages.plan.plan-list');
     }
 
 
