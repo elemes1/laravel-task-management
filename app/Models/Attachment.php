@@ -9,12 +9,13 @@ class Attachment extends Model
 {
     use HasFactory;
 
-
-    public function task() {
+    public function task()
+    {
         return $this->belongsTo(Task::class);
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'uploaded_by');
     }
 }

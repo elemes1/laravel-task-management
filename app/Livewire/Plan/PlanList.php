@@ -13,11 +13,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 
-class PlanList extends Component  implements HasForms, HasTable
+class PlanList extends Component implements HasForms, HasTable
 {
-    use InteractsWithTable,  InteractsWithForms;
+    use InteractsWithTable, InteractsWithForms;
 
-    public function table(Table $table):Table
+    public function table(Table $table): Table
     {
         return $table
             ->query(Plan::where(['created_by' => auth()->id()]))
@@ -26,8 +26,17 @@ class PlanList extends Component  implements HasForms, HasTable
                 TextColumn::make('description'),
                 TextColumn::make('created_at')->dateTime(),
                 TextColumn::make('created_at')->dateTime(),
-                IconColumn::make('status')
-                    ->size(IconColumn\IconColumnSize::Medium)
+                TextColumn::make('status')
+                    ->badge()
+                    ->getStateUsing(fn ($record): ?string => strtolower($record->status->name))
+                    ->colors([
+                        'secondary' => static fn ($state): bool => $state === 'open',
+                        'warning' => static fn ($state): bool => $state === 'archived',
+                    ])
+                    ->icons([
+                        'heroicon-m-arrow-path' => 'open',
+                        'heroicon-m-check-badge' => 'archived',
+                    ])->sortable(),
             ])
             ->filters([
                 // ...
@@ -37,8 +46,8 @@ class PlanList extends Component  implements HasForms, HasTable
             ])
             ->bulkActions([
                 // ...
-            ]) ->recordUrl(
-                fn (Model $record): string => route('plan.edit', ['plan' => $record->id]),
+            ])->recordUrl(
+                fn(Model $record): string => route('plan.edit', ['plan' => $record->id]),
             );
     }
 
@@ -46,10 +55,4 @@ class PlanList extends Component  implements HasForms, HasTable
     {
         return view('livewire.pages.plan.plan-list');
     }
-
-
-
-
-
-
 }

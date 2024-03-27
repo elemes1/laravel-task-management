@@ -7,18 +7,18 @@ use Livewire\Component;
 
 class TaskModal extends Component
 {
-
     public $showModal = false;
+
     public $task;
+
     public $isEdit = false;
 
     protected $listeners = ['openModal' => 'handleOpenModal'];
 
     public function mount()
     {
-        $this->task = new Task;
+        $this->task = new Task();
     }
-
 
     public function handleOpenModal($taskId = null)
     {
@@ -26,7 +26,7 @@ class TaskModal extends Component
             $this->task = Task::find($taskId);
             $this->isEdit = true;
         } else {
-            $this->task = new Task;
+            $this->task = new Task();
             $this->isEdit = false;
         }
         $this->showModal = true;
@@ -36,7 +36,7 @@ class TaskModal extends Component
     {
         $this->validate([
             'task.title' => 'required|string|max:255',
-            'task.description' => 'required|string'
+            'task.description' => 'required|string',
         ]);
 
         $this->task->save();
@@ -44,8 +44,6 @@ class TaskModal extends Component
         $this->emitTo('task-board', 'refreshBoard');
         $this->showModal = false;
     }
-
-
 
     public function render()
     {

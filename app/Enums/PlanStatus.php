@@ -1,13 +1,14 @@
 <?php
+
 namespace App\Enums;
 
 use Filament\Support\Contracts\HasLabel;
 
-enum PlanStatus: string  implements HasLabel
+enum PlanStatus: string implements HasLabel
 {
     case OPEN = 'open';
-    case ARCHIVED = 'archived';
 
+    case ARCHIVED = 'archived';
 
     // Add other statuses as needed
     public function getLabel(): ?string
@@ -23,7 +24,7 @@ enum PlanStatus: string  implements HasLabel
         };
     }
 
-    public function getColor(): string | array | null
+    public function getColor(): string|array|null
     {
         return match ($this) {
             self::OPEN => 'success',

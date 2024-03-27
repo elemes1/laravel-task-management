@@ -2,9 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\Enums\PlanStatus;
 use App\Filament\Resources\PlanResource\Pages;
-use App\Filament\Resources\PlanResource\RelationManagers;
 use App\Filament\Resources\PlanResource\RelationManagers\TasksRelationManager;
 use App\Models\Plan;
 use Filament\Forms;
@@ -12,8 +10,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PlanResource extends Resource
 {
@@ -30,7 +26,6 @@ class PlanResource extends Resource
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
-
 
             ]);
     }
@@ -75,7 +70,7 @@ class PlanResource extends Resource
     public static function getRelations(): array
     {
         return [
-            TasksRelationManager::class
+            TasksRelationManager::class,
         ];
     }
 

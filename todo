@@ -7,20 +7,20 @@ Write Test
 
 Data Modelling *
 
-Client side actions. Task management
-	CRUD Plan
-	 Create task
-	 Update Task
+Client side actions. Task management *
+	CRUD Plan *
+	 Create task *
+	 Update Task *
 
-	 Delete Task
-	 Show Tasks
-	 Change Task Status
-	Assign task Priority
+	 Delete Task *
+	 Show Tasks *
+	 Change Task Status *
+	Assign task Priority /Status
 
 
 Admin Side actions
   Setup Filament  *
-   admin Dashboard
+   admin Dashboard *
 	users*
 		Create users //Add fields / columns
 		Update Users //Add fields  / columns

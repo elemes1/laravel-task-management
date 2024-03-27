@@ -3,35 +3,35 @@
 namespace App\Livewire;
 
 use App\Models\ActivityLog;
-use App\Models\Plan;
+use App\Models\Task;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 
-class Activities extends Component  implements HasForms, HasTable
+class Activities extends Component implements HasForms, HasTable
 {
-    use InteractsWithTable,  InteractsWithForms;
+    use InteractsWithTable, InteractsWithForms;
 
-    public function mount(\App\Models\Task $task)
+    public mixed $attachments;
+
+    public function mount(Task $task)
     {
         $this->task = $task;
-
+        $this->attachments = $task->attachments;
     }
 
-    public function table(Table $table):Table
+    public function table(Table $table): Table
     {
         return $table
             ->query(ActivityLog::where(['subject_id' => $this->task->id]))
             ->columns([
                 TextColumn::make('event'),
                 TextColumn::make('description'),
-                TextColumn::make('caused_by')->dateTime(),
+                TextColumn::make('user.name'),
                 TextColumn::make('created_at')->dateTime(),
             ]);
     }
@@ -40,10 +40,4 @@ class Activities extends Component  implements HasForms, HasTable
     {
         return view('livewire.pages.plan.activities');
     }
-
-
-
-
-
-
 }

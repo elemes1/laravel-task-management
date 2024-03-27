@@ -10,9 +10,14 @@ class Plan extends Model
 {
     use HasFactory;
 
-
-    public function tasks() {
+    public function tasks()
+    {
         return $this->hasMany(Task::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     protected function casts(): array
@@ -20,10 +25,5 @@ class Plan extends Model
         return [
             'status' => PlanStatus::class,
         ];
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class,'created_by');
     }
 }
